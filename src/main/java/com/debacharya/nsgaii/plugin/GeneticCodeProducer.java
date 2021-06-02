@@ -28,7 +28,10 @@ import com.debacharya.nsgaii.datastructure.AbstractAllele;
 
 import java.util.List;
 
-@FunctionalInterface
+@FunctionalInterface // @FunctionalInterface 标记在接口上，"函数式接口"是指仅仅只包含一个抽象方法的接口.
+// gene code producer.
 public interface GeneticCodeProducer {
-	List<? extends AbstractAllele> produce(int length);
+
+    List<? extends AbstractAllele> produce(int length);
+
 }

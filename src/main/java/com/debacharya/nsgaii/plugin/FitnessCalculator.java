@@ -28,5 +28,7 @@ import com.debacharya.nsgaii.datastructure.Chromosome;
 
 @FunctionalInterface
 public interface FitnessCalculator {
-	double calculate(Chromosome chromosome);
+
+    double calculate(Chromosome chromosome);
+
 }

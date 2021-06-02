@@ -31,5 +31,7 @@ import java.util.List;
 
 @FunctionalInterface
 public interface CrossoverParticipantCreator {
-	List<Chromosome> create(Population population);
+
+    List<Chromosome> create(Population population);
+
 }

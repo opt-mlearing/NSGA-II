@@ -22,32 +22,31 @@
  * SOFTWARE.
  */
 
-package com.debacharya.nsgaii.plugin;
+package com.debacharya.nsgaii.plugin.crossover;
 
 import com.debacharya.nsgaii.Service;
-import com.debacharya.nsgaii.datastructure.BooleanAllele;
+import com.debacharya.nsgaii.datastructure.Chromosome;
+import com.debacharya.nsgaii.plugin.CrossoverParticipantCreator;
 
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.List;
 
-public class FitnessCalculatorProvider {
+/**
+ * 从父种群中选择两条待交叉的染色体.
+ */
+public class CrossoverParticipantCreatorProvider {
 
-	private static final String NON_BOOLEAN_ALLELE_UNSUPPORTED = "FitnessCalculator.normalizedGeneticCodeValue does not work with AbstractAllele type "			+
-																" other than BooleanAllele. If you are implementing a different type of AbstractAllele object " +
-																" use your own implementation of FitnessCalculator.";
+    public static CrossoverParticipantCreator selectByBinaryTournamentSelection() {
 
-	public static FitnessCalculator normalizedGeneticCodeValue(double actualMin, double actualMax, double normalizedMin, double normalizedMax) {
-		return chromosome -> {
+        return population -> {
 
-			if(!(chromosome.getGeneticCode().get(0) instanceof BooleanAllele))
-				throw new UnsupportedOperationException(FitnessCalculatorProvider.NON_BOOLEAN_ALLELE_UNSUPPORTED);
+            List<Chromosome> selected = new ArrayList<>();
+            selected.add(Service.crowdedBinaryTournamentSelection(population));
+            selected.add(Service.crowdedBinaryTournamentSelection(population));
+            return selected;
 
-			return Service.getNormalizedGeneticCodeValue(
-					chromosome.getGeneticCode().stream().map(e -> (BooleanAllele) e).collect(Collectors.toList()),
-					actualMin,
-					actualMax,
-					normalizedMin,
-					normalizedMax
-			);
-		};
-	}
+        };
+
+    }
+
 }

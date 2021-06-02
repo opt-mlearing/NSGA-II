@@ -30,19 +30,25 @@ import com.debacharya.nsgaii.datastructure.Population;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * 遗传交叉操作抽象类.
+ */
 public abstract class AbstractCrossover {
 
-	protected final CrossoverParticipantCreator crossoverParticipantCreator;
+	// 交叉操作的
+    protected final CrossoverParticipantCreator crossoverParticipantCreator;
 
-	protected float crossoverProbability = 0.7f;
+    // 执行交叉操作的default阈值.
+    protected float crossoverProbability = 0.7f;
 
-	public AbstractCrossover(CrossoverParticipantCreator crossoverParticipantCreator) {
-		this.crossoverParticipantCreator = crossoverParticipantCreator;
-	}
+    public AbstractCrossover(CrossoverParticipantCreator crossoverParticipantCreator) {
+        this.crossoverParticipantCreator = crossoverParticipantCreator;
+    }
 
-	public abstract List<Chromosome> perform(Population population);
+    public abstract List<Chromosome> perform(Population population);
 
-	public boolean shouldPerformCrossover() {
-		return ThreadLocalRandom.current().nextFloat() <= this.crossoverProbability;
-	}
+    public boolean shouldPerformCrossover() {
+        return ThreadLocalRandom.current().nextFloat() <= this.crossoverProbability;
+    }
+
 }

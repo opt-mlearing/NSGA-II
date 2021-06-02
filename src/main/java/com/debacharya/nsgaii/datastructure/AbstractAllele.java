@@ -24,14 +24,22 @@
 
 package com.debacharya.nsgaii.datastructure;
 
+/**
+ * 抽象类，等位基因，是指位于一对同源染色体 相同位置 上控制 同一性状 不同形态的基因.
+ */
 public abstract class AbstractAllele {
 
-	protected final Object gene;
+    protected final Object gene;
 
-	public AbstractAllele(Object gene) {
-		this.gene = gene;
-	}
+    public AbstractAllele(Object gene) {
+        this.gene = gene;
+    }
 
-	public abstract Object getGene();
-	public abstract AbstractAllele getCopy();
+    // 待子类实现获取具体 gene 的方法.
+    public abstract Object getGene();
+
+    // 看BooleanAllele的意思是获取当前等位基因的深度拷贝，
+    // 其中gene属性对应的value不变，而对应的等位基因实例是新的.
+    public abstract AbstractAllele getCopy();
+
 }

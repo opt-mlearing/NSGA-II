@@ -33,53 +33,74 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
+
 public class DefaultPluginProvider {
 
-	public static GeneticCodeProducer defaultGeneticCodeProducer() {
-		return (length) -> {
+    /**
+     * 产生基因.
+     *
+     * @return
+     */
+    public static GeneticCodeProducer defaultGeneticCodeProducer() {
 
-			List<BooleanAllele> geneticCode = new ArrayList<>();
+        return (length) -> {
 
-			for(int i = 0; i < length; i++)
-				geneticCode.add(i, new BooleanAllele(ThreadLocalRandom.current().nextBoolean()));
+            List<BooleanAllele> geneticCode = new ArrayList<>();
+            for (int i = 0; i < length; i++) {
+                // 随机产生.
+                geneticCode.add(i, new BooleanAllele(ThreadLocalRandom.current().nextBoolean()));
+            }
+            return geneticCode;
 
-			return geneticCode;
-		};
-	}
+        };
 
-	public static PopulationProducer defaultPopulationProducer() {
-		return (populationSize, chromosomeLength, geneticCodeProducer, fitnessCalculator) -> {
+    }
 
-			List<Chromosome> populace = new ArrayList<>();
+    /**
+     * 产生种群.
+     *
+     * @return
+     */
+    public static PopulationProducer defaultPopulationProducer() {
 
-			for(int i = 0; i < populationSize; i++)
-				populace.add(
-					new Chromosome(
-						geneticCodeProducer.produce(chromosomeLength)
-					)
-				);
+        return (populationSize, chromosomeLength, geneticCodeProducer, fitnessCalculator) -> {
 
-			return new Population(populace);
-		};
-	}
+            List<Chromosome> populace = new ArrayList<>();
+            for (int i = 0; i < populationSize; i++) {
+                // 通过一组有序基因构建一条染色体. -->  进而多条染色体组成一个种群.
+                populace.add(new Chromosome(geneticCodeProducer.produce(chromosomeLength)));
+            }
+            return new Population(populace);
 
-	public static ChildPopulationProducer defaultChildPopulationProducer() {
-		return (parentPopulation, crossover, mutation, populationSize) -> {
+        };
 
-			List<Chromosome> populace = new ArrayList<>();
+    }
 
-			while(populace.size() < populationSize)
-				if((populationSize - populace.size()) == 1)
-					populace.add(
-						mutation.perform(
-							Service.crowdedBinaryTournamentSelection(parentPopulation)
-						)
-					);
-				else
-					for(Chromosome chromosome : crossover.perform(parentPopulation))
-						populace.add(mutation.perform(chromosome));
+    /**
+     * 产生子种群 --> 子种群通过交叉变异的方式产生.
+     * 且子种群中染色体的个数与父种群中染色体的个数一致.
+     *
+     * @return
+     */
+    public static ChildPopulationProducer defaultChildPopulationProducer() {
 
-			return new Population(populace);
-		};
-	}
+        return (parentPopulation, crossover, mutation, populationSize) -> {
+
+            List<Chromosome> populace = new ArrayList<>();
+            while (populace.size() < populationSize) {
+                if ((populationSize - populace.size()) == 1) {
+                    populace.add(mutation.perform(Service.crowdedBinaryTournamentSelection(parentPopulation)));
+                } else {
+                    // 父种群->遍历交叉染色体->变异染色体. 原生的实现是产生两个交叉的染色体，然后再逐个变异.
+                    for (Chromosome chromosome : crossover.perform(parentPopulation)) {
+                        populace.add(mutation.perform(chromosome));
+                    }
+                }
+            }
+            return new Population(populace);
+
+        };
+
+    }
+
 }

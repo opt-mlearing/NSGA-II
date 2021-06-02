@@ -27,6 +27,18 @@ package com.debacharya.nsgaii.plugin;
 import com.debacharya.nsgaii.datastructure.Population;
 
 @FunctionalInterface
+/**
+ * 产生子种群 --> 父种群通过交叉变异的方式得到子种群.
+ */
 public interface ChildPopulationProducer {
-	Population produce(Population parentPopulation, AbstractCrossover crossover, AbstractMutation mutation, int populationSize);
+
+    /**
+     * @param parentPopulation 父种群.
+     * @param crossover        交叉方式.
+     * @param mutation         变异方式.
+     * @param populationSize   种群规模.
+     * @return
+     */
+    Population produce(Population parentPopulation, AbstractCrossover crossover, AbstractMutation mutation, int populationSize);
+
 }

@@ -26,7 +26,12 @@ package com.debacharya.nsgaii.plugin;
 
 import com.debacharya.nsgaii.datastructure.Population;
 
+/**
+ * 初代种群生成器.
+ */
 @FunctionalInterface
 public interface PopulationProducer {
-	Population produce(int populationSize, int chromosomeLength, GeneticCodeProducer geneticCodeProducer, FitnessCalculator fitnessCalculator);
+
+    Population produce(int populationSize, int chromosomeLength, GeneticCodeProducer geneticCodeProducer, FitnessCalculator fitnessCalculator);
+
 }

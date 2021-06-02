@@ -28,19 +28,34 @@ import com.debacharya.nsgaii.datastructure.Chromosome;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * 变异抽象类.
+ */
 public abstract class AbstractMutation {
 
-	protected float mutationProbability = 0.03f;
+    // mutation 编译的阈值.
+    protected float mutationProbability = 0.03f;
 
-	public AbstractMutation() {}
+    public AbstractMutation() {
+    }
 
-	public AbstractMutation(float mutationProbability) {
-		this.mutationProbability = mutationProbability;
-	}
+    /**
+     * @param mutationProbability 外部自定义编译阈值.
+     */
+    public AbstractMutation(float mutationProbability) {
+        this.mutationProbability = mutationProbability;
+    }
 
-	public abstract Chromosome perform(Chromosome chromosome);
+    /**
+     * 执行变异的方法.
+     *
+     * @param chromosome 染色体.
+     * @return 变异后的染色体.
+     */
+    public abstract Chromosome perform(Chromosome chromosome);
 
-	public boolean shouldPerformMutation() {
-		return ThreadLocalRandom.current().nextFloat() <= this.mutationProbability;
-	}
+    public boolean shouldPerformMutation() {
+        return ThreadLocalRandom.current().nextFloat() <= this.mutationProbability;
+    }
+
 }

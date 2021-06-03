@@ -16,6 +16,7 @@
     <artifactId>nsgaii</artifactId>
     <version>3.0.1</version>
     <packaging>jar</packaging>
+    <description> origin code from https://github.com/onclave/NSGA-II </description>
 
     <inceptionYear>2019</inceptionYear>
     <url>https://debacharya.com/nsgaii</url>
@@ -173,7 +174,6 @@
         </plugins>
     </build>
 
-<<<<<<< HEAD
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!--reset compiler java version-->
@@ -181,8 +181,6 @@
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
 
-</project>
-=======
     <profiles>
         <profile>
             <id>local</id>
@@ -248,5 +246,5 @@
             </build>
         </profile>
     </profiles>
+
 </project>
->>>>>>> 4834a77573a8d4db3e43b6f45d2b6663d4654dc8

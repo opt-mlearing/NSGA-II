@@ -16,12 +16,11 @@
     <artifactId>nsgaii</artifactId>
     <version>3.0.1</version>
     <packaging>jar</packaging>
-    <description> origin code from https://github.com/onclave/NSGA-II </description>
-
     <inceptionYear>2019</inceptionYear>
     <url>https://debacharya.com/nsgaii</url>
 
     <description>
+        origin code from https://github.com/onclave/NSGA-II
         A NSGA-II implementation using Java. This implementation of NSGA-II algorithm is in pure reference to the
         original published paper. This is not an effort to convert the originally implemented C code in Java.
         The original C code by the authors has not be referred to while writing this implementation.

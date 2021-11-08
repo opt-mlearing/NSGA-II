@@ -66,4 +66,4 @@ shall be updated shortly.
 
 github: https://github.com/onclave/NSGA-II
 
-## baidu 
+## think you  

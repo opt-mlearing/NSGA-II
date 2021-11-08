@@ -85,3 +85,4 @@ nb-configuration.xml
 .DS_Store
 test.log
 NSGA-II-report-*.txt
+output

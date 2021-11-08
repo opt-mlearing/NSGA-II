@@ -5,14 +5,13 @@
 package io.onclave.nsga.ii.interfaces;
 
 /**
- * 
- * 
- * @author  Debabrata Acharya <debabrata.acharya@icloud.com>
+ * @author Debabrata Acharya <debabrata.acharya@icloud.com>
  * @version 2.0
- * @since   2.0
+ * @since 2.0
  */
 public interface IObjectiveFunction {
-    
+
     public String objectiveFunctionTitle();
+
     public double getObjectiveValue(double fitness);
 }

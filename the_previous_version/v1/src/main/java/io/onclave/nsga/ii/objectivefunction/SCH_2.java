@@ -9,13 +9,13 @@ import io.onclave.nsga.ii.datastructure.ParetoObject;
 
 /**
  * the SCH objective function [f(x) = (x - 2)^2]
- * 
- * @author  Debabrata Acharya <debabrata.acharya@icloud.com>
+ *
+ * @author Debabrata Acharya <debabrata.acharya@icloud.com>
  * @version 1.0
- * @since   0.1
+ * @since 0.1
  */
 public class SCH_2 implements IObjectiveFunction {
-    
+
     private static final String AXIS_TITLE = "pow(x - 2, 2)";
 
     @Override
@@ -37,5 +37,5 @@ public class SCH_2 implements IObjectiveFunction {
     public String getAxisTitle() {
         return AXIS_TITLE;
     }
-    
+
 }

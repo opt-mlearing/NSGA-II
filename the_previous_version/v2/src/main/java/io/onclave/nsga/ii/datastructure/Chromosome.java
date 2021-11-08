@@ -11,14 +11,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 
- * 
- * @author  Debabrata Acharya <debabrata.acharya@icloud.com>
+ * @author Debabrata Acharya <debabrata.acharya@icloud.com>
  * @version 2.0
- * @since   2.0
+ * @since 2.0
  */
 public class Chromosome {
-    
+
     private List<Chromosome> dominatedChromosomes = new ArrayList<>();
     private final List<Double> objectiveValues = new ArrayList<>();
     private double crowdingDistance = 0;
@@ -26,40 +24,42 @@ public class Chromosome {
     private int dominationCount = 0;
     private double fitness;
     private int rank = 1;
-    
+
     private Chromosome(final Chromosome chromosome) {
-        
+
         this.geneticCode = new Allele[Configuration.CHROMOSOME_LENGTH];
-        
-        for(int i = 0; i < Configuration.CHROMOSOME_LENGTH; i++) this.geneticCode[i] = new Allele(chromosome.getGeneticCode()[i].getGene());
-        for(int i = 0; i < Configuration.objectives.size(); i++) this.objectiveValues.add(chromosome.getObjectiveValues().get(i));
+
+        for (int i = 0; i < Configuration.CHROMOSOME_LENGTH; i++)
+            this.geneticCode[i] = new Allele(chromosome.getGeneticCode()[i].getGene());
+        for (int i = 0; i < Configuration.objectives.size(); i++)
+            this.objectiveValues.add(chromosome.getObjectiveValues().get(i));
     }
-    
+
     public Chromosome(final Allele[] geneticCode) {
-        
+
         this.geneticCode = geneticCode;
         this.fitness = Service.calculateFitness(this.geneticCode);
-        
-        for(int index = 0; index < Configuration.objectives.size(); index++) {
+
+        for (int index = 0; index < Configuration.objectives.size(); index++) {
             this.objectiveValues.add(index, Configuration.objectives.get(index).getObjectiveValue(this.fitness));
         }
     }
-    
+
     public void reset() {
-        
+
         this.dominationCount = 0;
         this.rank = Integer.MAX_VALUE;
         this.dominatedChromosomes = new ArrayList<>();
     }
-    
+
     public Chromosome getCopy() {
         return new Chromosome(this);
     }
-    
+
     public void setDominatedChromosome(final Chromosome chromosome) {
         this.dominatedChromosomes.add(chromosome);
     }
-    
+
     public void incrementDominationCount(int incrementValue) {
         this.dominationCount += incrementValue;
     }
@@ -95,7 +95,7 @@ public class Chromosome {
     public List<Chromosome> getDominatedChromosomes() {
         return dominatedChromosomes;
     }
-    
+
     @Override
     public String toString() {
         return null;

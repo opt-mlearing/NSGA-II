@@ -7,16 +7,14 @@ package io.onclave.nsga.ii.datastructure;
 import java.util.List;
 
 /**
- * 
- * 
- * @author  Debabrata Acharya <debabrata.acharya@icloud.com>
+ * @author Debabrata Acharya <debabrata.acharya@icloud.com>
  * @version 2.0
- * @since   2.0
+ * @since 2.0
  */
 public class Population {
-    
+
     private final List<Chromosome> populace;
-    
+
     public Population(final List<Chromosome> populace) {
         this.populace = populace;
     }

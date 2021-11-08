@@ -1,7 +1,7 @@
 /*
- * This code file and the codebase/software containing it is 
+ * This code file and the codebase/software containing it is
  * explicitely licensed to Mr. Debabrata Acharya (@onclave)
- * unauthorized use and access of the codebase, parts of the 
+ * unauthorized use and access of the codebase, parts of the
  * codebase, software or parts of this software is not allowed.
  */
 package io.onclave.nsga.ii.objectivefunction;
@@ -11,11 +11,10 @@ import io.onclave.nsga.ii.datastructure.Chromosome;
 import io.onclave.nsga.ii.datastructure.ParetoObject;
 
 /**
- *
  * @author sajib
  */
 public class ZDT1_1 implements IObjectiveFunction {
-    
+
     private static final String AXIS_TITLE = "x1";
 
     @Override
@@ -37,5 +36,5 @@ public class ZDT1_1 implements IObjectiveFunction {
     public String getAxisTitle() {
         return AXIS_TITLE;
     }
-    
+
 }

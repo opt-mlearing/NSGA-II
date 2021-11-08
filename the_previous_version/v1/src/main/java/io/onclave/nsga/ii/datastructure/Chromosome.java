@@ -11,28 +11,28 @@ import java.util.List;
 /**
  * this is a simulation of a biological chromosome that contains a genetic code, a fitness value,
  * a domination rank, an unique ID, and a list of dominated chromosomes.
- * 
- * @author  Debabrata Acharya <debabrata.acharya@icloud.com>
+ *
+ * @author Debabrata Acharya <debabrata.acharya@icloud.com>
  * @version 1.1
- * @since   0.1
+ * @since 0.1
  */
 public class Chromosome {
-    
+
     public Chromosome() {
         this(-Double.MIN_VALUE);
     }
-    
+
     public Chromosome(final double fitness) {
         this(null, fitness, "");
     }
-    
+
     public Chromosome(final Allele[] geneticCode, final double fitness, final String extraInfo) {
         this(geneticCode, fitness, extraInfo, 0);
-        
+
     }
-    
+
     public Chromosome(final Allele[] geneticCode, final double fitness, final String extraInfo, final int rank) {
-        
+
         this.geneticCode = geneticCode;
         this.fitness = fitness;
         this.extraInfo = extraInfo;
@@ -40,7 +40,7 @@ public class Chromosome {
         this.uniqueID = Long.toString(System.currentTimeMillis()) + "-" + Integer.toString(Service.generateRandomInt());
         this.dominatedChromosomes = new ArrayList<>();
     }
-    
+
     private Allele[] geneticCode;
     private double fitness;
     private String extraInfo;
@@ -86,7 +86,8 @@ public class Chromosome {
 
     /**
      * the new fitness value is set as soon as a new genetic code is set for a chromosome.
-     * @param   geneticCode     the genetic code that the chromosome carries.
+     *
+     * @param geneticCode the genetic code that the chromosome carries.
      */
     public void setGeneticCode(Allele[] geneticCode) {
         this.geneticCode = geneticCode;

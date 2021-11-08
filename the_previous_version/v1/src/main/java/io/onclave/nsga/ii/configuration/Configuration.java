@@ -14,20 +14,20 @@ import java.util.List;
  * this is the Configuration file for the algorithm, where all the values are set and the initial
  * configurations are set and run.
  * to change any aspect of the algorithm, this file may be tweaked.
- * 
- * @author  Debabrata Acharya <debabrata.acharya@icloud.com>
+ *
+ * @author Debabrata Acharya <debabrata.acharya@icloud.com>
  * @version 1.0
- * @since   0.1
+ * @since 0.1
  */
 public class Configuration {
-    
+
     private static final int POPULATION_SIZE = 800;
     private static final int GENERATIONS = 50;
     private static final int CHROMOSOME_LENGTH = 20;
     private static final float CROSSOVER_PROBABILITY = 0.7f;
     private static final float MUTATION_PROBABILITY = 0.03f;
     private static List<IObjectiveFunction> objectives = null;
-    
+
     public static final double ACTUAL_MIN = 0;
     public static final double ACTUAL_MAX = Math.pow(2, CHROMOSOME_LENGTH) - 1;
     public static final double NORMALIZED_MIN = 0;
@@ -46,18 +46,18 @@ public class Configuration {
     public static int getCHROMOSOME_LENGTH() {
         return CHROMOSOME_LENGTH;
     }
-    
+
     /**
      * this method sets the objective functions over which the algorithm is to operate.
      * it is a list of IObjectionFunction objects.
      */
     public static void buildObjectives() {
-        
+
         List<IObjectiveFunction> newObjectives = new ArrayList<>();
-        
+
         newObjectives.add(new SCH_1());
         newObjectives.add(new SCH_2());
-        
+
         setObjectives(newObjectives);
     }
 
@@ -76,11 +76,11 @@ public class Configuration {
     public static float getCROSSOVER_PROBABILITY() {
         return CROSSOVER_PROBABILITY;
     }
-    
+
     public static String getXaxisTitle() {
         return getObjectives().size() > 2 ? DEFAULT_X_AXIS_TITLE : getObjectives().get(0).getAxisTitle();
     }
-    
+
     public static String getYaxisTitle() {
         return getObjectives().size() > 2 ? DEFAULT_Y_AXIS_TITLE : getObjectives().get(1).getAxisTitle();
     }

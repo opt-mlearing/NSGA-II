@@ -8,24 +8,24 @@ package io.onclave.nsga.ii.datastructure;
  * along with the corresponding assigned crowding distance.
  * this is an IoC extension of the Chromosome class where each chromosomes are stored along with its
  * corresponding crowding distance assigned to it.
- * 
+ * <p>
  * property crowdingDistanceSorted is a marker variable that keeps record whether the ParetoObject has
  * already been considered during crowd comparison sorting.
- * 
- * @author  Debabrata Acharya <debabrata.acharya@icloud.com>
+ *
+ * @author Debabrata Acharya <debabrata.acharya@icloud.com>
  * @version 1.0
- * @since   0.1
+ * @since 0.1
  */
 public class ParetoObject {
-    
+
     private Chromosome chromosome = null;
     private double crowdingDistance = -1f;
     private boolean crowdingDistanceSorted = false;
-    
+
     public ParetoObject(Chromosome chromosome) {
         this(chromosome, -1f);
     }
-    
+
     public ParetoObject(Chromosome chromosome, float crowdingDistance) {
         this.chromosome = chromosome;
         this.crowdingDistance = crowdingDistance;

@@ -35,7 +35,7 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public abstract class AbstractCrossover {
 
-	// 交叉操作的
+    // 交叉操作的
     protected final CrossoverParticipantCreator crossoverParticipantCreator;
 
     // 执行交叉操作的default阈值.

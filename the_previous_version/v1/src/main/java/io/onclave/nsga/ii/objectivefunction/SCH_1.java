@@ -9,20 +9,20 @@ import io.onclave.nsga.ii.datastructure.ParetoObject;
 
 /**
  * the SCH objective function [f(x) = x^2]
- * 
- * @author  Debabrata Acharya <debabrata.acharya@icloud.com>
+ *
+ * @author Debabrata Acharya <debabrata.acharya@icloud.com>
  * @version 1.0
- * @since   0.1
+ * @since 0.1
  */
 public class SCH_1 implements IObjectiveFunction {
-    
+
     private static final String AXIS_TITLE = "pow(x, 2)";
-    
+
     @Override
     public double objectiveFunction(final ParetoObject paretoObject) {
         return objectiveFunction(paretoObject.getChromosome());
     }
-    
+
     @Override
     public double objectiveFunction(final Chromosome chromosome) {
         return objectiveFunction(chromosome.getFitness());
